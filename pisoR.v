@@ -1,0 +1,21 @@
+module piso1(sout,sin,clk);
+    output sout;
+    input [3:0]sin;
+    input clk;
+    wire [3:0]q;
+    not u1(p,sl);
+    and u2(n,sin[1],p);
+    and u3(r,sl,q[0]);
+    or u4(s,n,r);
+    and u5(t,sin[2],p);
+    and u6(u,sl,q[1]);
+    or u7(v,u,t);
+    and u8(w,sin[3],p);
+    and u9(y,sl,q[2]);
+    or u10(z,w,y);
+    dff u11(q[0],sin[0],clk);
+    dff u12(q[1],s,clk);
+    dff u13(q[2],v,clk);
+    dff u14(q[3],z,clk);
+    assign sout = q[3];
+endmodule
